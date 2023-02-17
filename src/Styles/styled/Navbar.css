@@ -1,0 +1,45 @@
+.navbar-logo{
+   height: 3rem;
+   width: auto;
+   margin: 0;
+   padding: 0;
+}
+.navbar{
+   background-color: #FFECD1;
+}
+.btn-container {
+   position: relative;
+ }
+ .user-btn {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 0 0.5rem;
+   position: relative;
+   font-size: 1.2rem;
+   color: #15616D;
+   background-color: #FF7D00;
+   border-radius: 40%;
+   font-weight: 700;
+   right:1rem;
+ }
+
+ .dropdown {
+   position: absolute;
+   top: 40px;
+   left: -4rem;
+   width: 100%;
+   
+   width: fit-content;
+   height: fit-content;
+
+   padding: 0.5rem;
+   text-align: center;
+   visibility: hidden;
+ }
+ .show-dropdown {
+   visibility: visible;
+ }
+.logout-btn{
+   background-color:#001524 ;
+}

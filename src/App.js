@@ -1,12 +1,9 @@
-import { Login } from './Pages';
-import './Styles/App.css';
-
+import {Voting } from "./Pages";
 function App() {
   return (
-    <div >
-      
-      <Login/>
-      </div>
+    <div>
+      <Voting />
+    </div>
   );
 }
 
