@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState} from 'react';
 import { Logo } from "../index";
 import {
   MDBNavbar,
@@ -6,13 +6,15 @@ import {
   MDBNavbarBrand,
   MDBBtn,
 } from "mdb-react-ui-kit";
-
+const userData=localStorage.getItem('userdata') ? JSON.parse(localStorage.getItem('userdata')) : null;
 const Navbar = ({ user, setUser }) => {
    const [showLogout, setShowLogout] = useState(false);
+
    const handleLogout = () => {
       setUser('');
       localStorage.removeItem('userData');
     };
+
   return (
     <>
       <MDBNavbar sticky light className="navbar">
@@ -26,7 +28,7 @@ const Navbar = ({ user, setUser }) => {
               className="user-btn"
               onClick={() => setShowLogout(!showLogout)}
             >
-              {user?.name}
+              {userData?.name}
             </button>
             <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>
               <MDBBtn

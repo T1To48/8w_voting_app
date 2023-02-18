@@ -10,7 +10,7 @@ import "mdb-react-ui-kit/dist/css/mdb.min.css";
 function CandidateCard({candidateName,candidatePicture}) {
   return (
   
-          <MDBCard  >
+          <MDBCard className="each-card"  >
             <div className="d-flex justify-content-between p-3">
               <p className="lead mb-0">{candidateName}</p>
             </div>

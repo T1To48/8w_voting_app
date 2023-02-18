@@ -4,3 +4,14 @@
    justify-content: center;
    
 }
+.voting-page-title{
+   color:#001524;
+   font-style: italic;
+   font-family: cursive;
+   display: flex;
+   padding-top:1rem ;
+   justify-content: center;
+}
+.each-card{
+   margin-top: 1rem;
+}

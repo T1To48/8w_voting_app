@@ -271,5 +271,12 @@ export const users = [
     password: '7LFDNSK',
     type: 'admin',
     email: 'anna.johnson@gmail.com'
+  },
+  {
+    id: "5tJ4saN9cL8S",
+    name: 'test',
+    password: 'test',
+    type: 'admin',
+    email: 'test@test'
   }
 ];

@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState,useEffect} from "react";
+
 import Logo from "../Utilities/Logo.component";
+
+import { PAGES } from "../Constants";
+import { users } from "../Utilities/VotersData";
+
 import LoginImg from "../Assets/Images/login page img.jpg";
+
 import { FormRow } from "../Components";
+
 import {
   MDBBtn,
   MDBContainer,
@@ -12,12 +19,46 @@ import {
   MDBCol,
 } from "mdb-react-ui-kit";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../Styles/styled/LoginPage.css"
+import "../Styles/styled/LoginPage.css";
 
-const Login = () => {
+const [, voting] = PAGES;
+
+const Login = ({ setPage }) => {
+  const [inputEmail, setInputEmail] = useState("")
+  const [inputPassword, setInputPassword] = useState("")
+  const [matchedUser, setMatchedUser] = useState("")
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setMatchedUser(users.find((user)=>user.email===inputEmail && user.password===inputPassword))
+    
+  };
+  
+useEffect(()=>{
+  if(matchedUser!==undefined){
+    console.log(matchedUser.name)
+  localStorage.setItem('userdata', JSON.stringify(matchedUser));
+  //
+  }
+  else {alert("Incorrect Login Data")}
+},[matchedUser])
+
+useEffect(()=>{
+  if(matchedUser && matchedUser!==""){
+    setPage(voting)
+  }
+},[setPage,matchedUser])
+  const handleEmailChange=(e)=>{
+    setInputEmail(e.target.value)
+  }
+  const handlePasswordChange=(e)=>{
+    setInputPassword(e.target.value)
+  }
+
   return (
     <>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <MDBContainer className="my-5">
           <MDBCard>
             <MDBRow className="g-0">
@@ -36,7 +77,7 @@ const Login = () => {
                   <br />
                   <div className="title">
                     <span className="h1 fw-bold mb-0">
-                      <Logo logoClass="login-logo"/>
+                      <Logo logoClass="login-logo" />
                     </span>
 
                     <h5
@@ -52,6 +93,8 @@ const Login = () => {
                     id="formControlLg"
                     type="email"
                     size="lg"
+                    name="email"
+                    handleChange={handleEmailChange}
                   />
                   <FormRow
                     wrapperClass="mb-4"
@@ -59,9 +102,17 @@ const Login = () => {
                     id="formControlLg"
                     type="password"
                     size="lg"
+                    name="password"
+                    handleChange={handlePasswordChange}
                   />
 
-                  <MDBBtn className="mb-4 px-5" color="dark" size="lg">
+                  <MDBBtn
+                    type="submit"
+                    className="mb-4 px-5"
+                    color="dark"
+                    size="lg"
+                    
+                  >
                     Login
                   </MDBBtn>
                 </MDBCardBody>
